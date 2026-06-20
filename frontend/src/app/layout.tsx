@@ -5,9 +5,9 @@ export const metadata: Metadata = {
   title: "CEDT Grader",
   description: "Auto-Grading Platform for CEDT",
   icons: {
-    icon: "/FavoriteIcon.jpg",
-    shortcut: "/FavoriteIcon.jpg",
-    apple: "/FavoriteIcon.jpg",
+    icon: "/image/FavoriteIcon.jpg",
+    shortcut: "/image/FavoriteIcon.jpg",
+    apple: "/image/FavoriteIcon.jpg",
   },
 };
 
