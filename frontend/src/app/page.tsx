@@ -73,7 +73,7 @@ export default function Home() {
     <div className="layout-container">
       <header className="header glass">
         <img src="/image/cedt.png" alt="CEDT Logo" style={{ width: '100px', height: '48px', marginRight: '0.8rem' }} />
-        <h1>!! Fake Grader !!</h1>
+        <h1>!!    Fake    Grader    !!</h1>
         <div style={{ color: "var(--text-secondary)" }}>Computer Programming</div>
       </header>
 
