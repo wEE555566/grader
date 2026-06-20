@@ -6,7 +6,7 @@ import subprocess
 import tempfile
 import os
 import time
-
+import math
 import json
 
 app = FastAPI(title="Grader API")
@@ -35,6 +35,21 @@ try:
             PROBLEMS_DB[p["id"]] = p
 except Exception as e:
     print("Error loading problems.json:", e)
+
+def is_close_float(a: str, b: str, rel_tol: float = 1e-6, abs_tol: float = 1e-9) -> bool:
+    """Return True if a and b represent floats that are close enough."""
+    try:
+        return math.isclose(float(a), float(b), rel_tol=rel_tol, abs_tol=abs_tol)
+    except ValueError:
+        return a == b
+
+def compare_outputs(actual: str, expected: str) -> bool:
+    """Token-by-token comparison with float tolerance."""
+    actual_tokens = actual.split()
+    expected_tokens = expected.split()
+    if len(actual_tokens) != len(expected_tokens):
+        return False
+    return all(is_close_float(a, e) for a, e in zip(actual_tokens, expected_tokens))
 
 def compile_code(source_file, output_exec):
     try:
@@ -132,11 +147,8 @@ def grade_submission(submission: CodeSubmission):
                 status = "Runtime Error" if run_res["error"] != "Time Limit Exceeded" else "Time Limit Exceeded"
                 is_pass = False
             else:
-                # Remove extra spaces/newlines for comparison
-                out_clean = " ".join(actual_output.split())
-                exp_clean = " ".join(expected_output.split())
-                
-                if out_clean == exp_clean or (not expected_output and not actual_output):
+                # Compare with float tolerance for numeric outputs
+                if compare_outputs(actual_output, expected_output) or (not expected_output and not actual_output):
                     status = "Passed"
                     is_pass = True
                     passed += 1
