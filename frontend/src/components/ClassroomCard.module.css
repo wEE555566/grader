@@ -1,0 +1,319 @@
+.card {
+  position: relative;
+  width: 350px;
+  height: 330px;
+  background-color: var(--qk-surface);
+  border: 1px solid var(--qk-border);
+  border-radius: var(--qk-radius-classroom-card);
+  overflow: hidden;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.card:hover {
+  box-shadow: 0 10px 20px -6px rgba(12, 82, 230, 0.15);
+  transform: translateY(-2px);
+}
+
+.banner {
+  position: relative;
+  height: 154px;
+  width: 100%;
+  border-bottom: 1px solid #64748b;
+  background-color: #f0f4ff;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.banner--purple {
+  background-image: url('/qookru/qk-classroom-banner-purple.png');
+}
+
+.banner--blue {
+  background-image: url('/qookru/qk-classroom-banner-blue.png');
+}
+
+.banner--green {
+  background-image: url('/qookru/qk-classroom-banner-green.png');
+}
+
+.banner--teal {
+  background-image: url('/qookru/qk-classroom-banner-teal.png');
+}
+
+.banner--yellow {
+  background-image: url('/qookru/qk-classroom-banner-yellow.png');
+}
+
+.banner--orange {
+  background-image: url('/qookru/qk-classroom-banner-orange.png');
+}
+
+.banner--pink {
+  background-image: url('/qookru/qk-classroom-banner-pink.png');
+}
+
+.menuBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.7);
+  transition: background-color var(--transition-fast);
+}
+
+.menuBtn:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 6px 8px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  color: rgba(0, 0, 0, 0.5);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.actionBtn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.actionToggleOn {
+  color: #10b981;
+}
+
+.actionToggleOn:hover {
+  color: #059669;
+}
+
+.actionToggleOff {
+  color: var(--qk-text-subtle);
+}
+
+.actionToggleOff:hover {
+  color: var(--qk-text-muted);
+}
+
+.actionDanger {
+  color: #ef4444;
+}
+
+.actionDanger:hover {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+}
+
+.actionPrimary {
+  color: var(--qk-primary);
+}
+
+.actionPrimary:hover {
+  background: rgba(12, 82, 230, 0.12);
+  color: var(--qk-primary-dark);
+}
+
+.codeRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(12, 82, 230, 0.08);
+  border: 1px solid rgba(12, 82, 230, 0.18);
+  color: var(--qk-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.copyBtn:hover {
+  background: rgba(12, 82, 230, 0.16);
+  color: var(--qk-primary-dark);
+}
+
+.inactiveBadge {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/*
+  The classroom banner PNGs ship with placeholder text baked into the
+  artwork. The opaque title/workspace overlay boxes below must be wide
+  and tall enough to fully cover that placeholder text — otherwise the
+  baked-in copy bleeds through when the card renders real data.
+*/
+.titleBox {
+  position: absolute;
+  top: 24px;
+  right: 50px;
+  min-width: 150px;
+  max-width: calc(100% - 130px);
+  background-color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--qk-text-muted);
+  letter-spacing: -0.3px;
+  line-height: 1.35;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: center;
+}
+
+.workspaceBox {
+  position: absolute;
+  top: 78px;
+  right: 50px;
+  min-width: 150px;
+  max-width: calc(100% - 130px);
+  min-height: 52px;
+  background-color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.workspaceLabel {
+  font-size: 11px;
+  color: var(--qk-text-subtle);
+  font-weight: 600;
+}
+
+.workspaceName {
+  font-size: 12px;
+  color: var(--qk-text-subtle);
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.body {
+  position: absolute;
+  inset: 154px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  padding: 18px 20px 14px;
+}
+
+.codeLabel {
+  font-size: 12px;
+  color: var(--qk-text-muted);
+  line-height: 20px;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.code {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1;
+  color: var(--qk-primary);
+  letter-spacing: 1px;
+  margin: 0;
+  text-align: center;
+}
+
+.metaRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--qk-text-subtle);
+  line-height: 1.4;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--qk-border-soft);
+  margin: 14px 0 8px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.studentCount {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--qk-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.scoresLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--qk-primary);
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.scoresLink:hover {
+  color: var(--qk-primary-dark);
+}

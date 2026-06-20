@@ -1,0 +1,327 @@
+/* LeaderboardView — uses QkPageHero for the banner, plus a tab row and
+   ranked-list cards.  Styling is consistent with Repository / Classroom
+   hero pages. */
+
+.page {
+  padding-bottom: 2.5rem;
+  background-color: var(--qk-bg);
+  min-height: 100%;
+}
+
+/* ========== Tab row below the hero ========== */
+.tabRow {
+  padding: 0 2rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tabGroup {
+  display: inline-flex;
+  background: var(--qk-surface);
+  border-radius: 12px;
+  border: 1px solid var(--qk-border);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  background: var(--qk-surface);
+  border: none;
+  box-shadow: none;
+  color: var(--qk-text-muted);
+  font-family: var(--font-body);
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  border-radius: 0;
+  position: relative;
+  white-space: nowrap;
+}
+
+.tab + .tab {
+  border-left: 1px solid var(--qk-border);
+}
+
+.tab:hover:not(.tabActive) {
+  background: rgba(12, 82, 230, 0.04);
+  color: var(--qk-text-dark);
+}
+
+.tabActive {
+  background: var(--qk-primary);
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(12, 82, 230, 0.25);
+  border-radius: 11px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== Loading / error / empty states ========== */
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 4rem;
+  color: var(--color-text-muted);
+}
+
+.spinnerIcon {
+  font-size: 2rem;
+}
+
+.error {
+  text-align: center;
+  padding: 3rem 2rem;
+  margin: 0 2rem;
+  color: var(--color-error, #dc2626);
+  background: var(--color-error-light, #fef2f2);
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  font-size: 0.92rem;
+}
+
+.empty {
+  padding: 3rem;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+/* ========== Results panel ========== */
+.panel {
+  margin: 0 1rem;
+  background: var(--qk-surface);
+  border-radius: var(--qk-radius-card, 16px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--qk-border);
+  overflow: hidden;
+}
+
+.list {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ========== Row card — base shared by all ranks ========== */
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+}
+
+/* Top-3 rows: white text, no border, elevated shadow. Background gradient is
+   applied inline per index (rank1/rank2/rank3). */
+.cardTop {
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(12, 82, 230, 0.25);
+}
+
+.cardTop:hover {
+  box-shadow: 0 6px 20px rgba(12, 82, 230, 0.35);
+}
+
+/* Remaining rows. */
+.cardRest {
+  background: var(--qk-surface);
+  color: var(--qk-text-muted);
+  border: 1px solid var(--qk-border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+.cardRest:hover {
+  border-color: var(--qk-primary);
+  box-shadow: 0 3px 12px rgba(12, 82, 230, 0.08);
+}
+
+/* ========== Rank number column ========== */
+.rankCol {
+  width: 40px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.rankFallback {
+  color: var(--qk-text-muted);
+}
+
+/* renderRankIcon colors */
+.iconGold {
+  color: #FBBF24;
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.4));
+}
+
+.iconSilver {
+  color: var(--qk-text-subtle);
+  font-size: 1.4rem;
+}
+
+.iconBronze {
+  color: #B45309;
+  font-size: 1.3rem;
+}
+
+.iconNumber {
+  font-weight: 800;
+  color: var(--qk-text-muted);
+}
+
+/* ========== Avatar ========== */
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarTop {
+  border: 3px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.avatarRest {
+  border: 3px solid #e2e8f0;
+  background: #f1f5f9;
+}
+
+.avatarImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatarIconTop {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.avatarIconRest {
+  font-size: 1.4rem;
+  color: #cbd5e1;
+}
+
+/* ========== Name & meta ========== */
+.info {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1.4;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.roleBadge {
+  font-size: 0.7rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.roleBadgeTop {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.roleBadgeRest {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+/* ========== Exams taken count ========== */
+.examsTaken {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+/* ========== Score / attempts number ========== */
+.score {
+  font-weight: 800;
+  font-size: 1.5rem;
+  min-width: 70px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.scoreTop {
+  color: white;
+}
+
+.scoreRest {
+  color: var(--qk-primary);
+}
+
+/* ========== Popular-exam creator line ========== */
+.creator {
+  font-size: 0.85rem;
+}
+
+.creatorTop {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.creatorRest {
+  color: #64748b;
+}
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .tabRow {
+    padding: 0 1rem;
+  }
+
+  .tabGroup {
+    width: 100%;
+  }
+
+  .tab {
+    flex: 1;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .panel {
+    margin: 0 0.75rem;
+    border-radius: 12px;
+  }
+
+  .list {
+    padding: 0.75rem;
+  }
+
+  .card {
+    padding: 0.75rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .score {
+    font-size: 1.2rem;
+    min-width: 50px;
+  }
+}

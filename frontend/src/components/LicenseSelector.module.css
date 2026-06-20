@@ -1,0 +1,185 @@
+/* ========== License Selector Wrapper ========== */
+.selectorWrapper {
+  padding: 0.5rem 0;
+}
+
+.selectorTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ========== Questions ========== */
+.questionBlock {
+  margin-bottom: 1.25rem;
+}
+
+.questionLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.optionsRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.optionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
+}
+
+.optionBtn:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+
+.optionBtnActive {
+  border-color: var(--color-primary);
+  background: #eff6ff;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* ========== Preview Badge ========== */
+.previewSection {
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  background: #f8fafc;
+  border-radius: 10px;
+  border: 1px solid #f0f0f0;
+}
+
+.previewLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+/* ========== Badge (Compact read-only display) ========== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.badgeBY {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.badgeSA {
+  background: #dbeafe;
+  color: var(--color-primary);
+}
+
+.badgeNC {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.badgeND {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* ========== License Detail Card ========== */
+.licenseDetail {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.licenseIcon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.licenseInfo {
+  flex: 1;
+}
+
+.licenseName {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.licenseDesc {
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.licenseTagsRow {
+  display: flex;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.licenseTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.tagGreen {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.tagRed {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.tagBlue {
+  background: #dbeafe;
+  color: var(--color-primary);
+}
+
+.tagYellow {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+/* ========== Responsive ========== */
+

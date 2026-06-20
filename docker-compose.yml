@@ -1,0 +1,27 @@
+services:
+  grader-api:
+    build:
+      context: .
+      dockerfile: build/Dockerfile.backend
+    container_name: grader-api
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+
+  grader-frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../build/Dockerfile.frontend
+    container_name: grader-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - grader-api

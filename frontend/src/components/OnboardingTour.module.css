@@ -1,0 +1,333 @@
+/* ==========================================================
+   OnboardingTour — Guided tooltip tour overlay
+   ========================================================== */
+
+/* ── Backdrop ── */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: auto;
+}
+
+.backdropOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 10000;
+  animation: tourFadeIn 0.25s ease;
+}
+
+/* ── Spotlight (cutout around target element) ── */
+.spotlight {
+  position: fixed;
+  z-index: 10001;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.spotlightPulse {
+  position: fixed;
+  z-index: 10001;
+  border: 2px solid var(--qk-primary, #0c52e6);
+  border-radius: 12px;
+  animation: tourPulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Tooltip ── */
+.tooltip {
+  position: fixed;
+  z-index: 10002;
+  width: 320px;
+  max-width: calc(100vw - 2rem);
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05);
+  padding: 1.25rem;
+  animation: tourSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Arrow */
+.tooltip::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: white;
+  transform: rotate(45deg);
+  box-shadow: -1px -1px 0 rgba(0,0,0,0.05);
+}
+
+.tooltipTop::before {
+  bottom: -6px;
+  left: 50%;
+  margin-left: -6px;
+}
+
+.tooltipBottom::before {
+  top: -6px;
+  left: 50%;
+  margin-left: -6px;
+}
+
+.tooltipLeft::before {
+  right: -6px;
+  top: 50%;
+  margin-top: -6px;
+}
+
+.tooltipRight::before {
+  left: -6px;
+  top: 50%;
+  margin-top: -6px;
+}
+
+/* ── Header ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.stepBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--qk-primary, #0c52e6), var(--qk-primary-dark, #003bb0));
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+  line-height: 1.3;
+  font-family: var(--font-heading);
+}
+
+/* ── Description ── */
+.description {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary, #475569);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* ── Footer ── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.progressDots {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+.dotActive {
+  background: var(--qk-primary, #0c52e6);
+  width: 18px;
+  border-radius: 4px;
+}
+
+.dotDone {
+  background: var(--color-success, #10b981);
+}
+
+.actions {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.skipBtn {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.35rem 0.6rem;
+  border-radius: 8px;
+  transition: all 0.15s;
+  font-family: var(--font-body);
+}
+
+.skipBtn:hover {
+  color: #64748b;
+  background: #f1f5f9;
+}
+
+.prevBtn {
+  background: white;
+  border: 1.5px solid #e2e8f0;
+  color: #64748b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.4rem 0.8rem;
+  border-radius: 10px;
+  transition: all 0.15s;
+  font-family: var(--font-body);
+}
+
+.prevBtn:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+}
+
+.nextBtn {
+  background: linear-gradient(135deg, var(--qk-primary, #0c52e6), var(--qk-primary-dark, #003bb0));
+  border: none;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.4rem 1rem;
+  border-radius: 10px;
+  transition: all 0.15s;
+  font-family: var(--font-body);
+  box-shadow: 0 2px 8px rgba(12, 82, 230, 0.2);
+}
+
+.nextBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(12, 82, 230, 0.3);
+}
+
+/* ── Welcome overlay (first step, centered) ── */
+.welcomeOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10002;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.welcomeCard {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  animation: tourSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.welcomeEmoji {
+  font-size: 3rem;
+  margin-bottom: 0.75rem;
+  line-height: 1;
+}
+
+.welcomeTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text-main, #0f172a);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+}
+
+.welcomeDesc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary, #475569);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.welcomeActions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.welcomeStartBtn {
+  background: linear-gradient(135deg, var(--qk-primary, #0c52e6), var(--qk-primary-dark, #003bb0));
+  border: none;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0.6rem 1.5rem;
+  border-radius: 12px;
+  transition: all 0.15s;
+  font-family: var(--font-heading);
+  box-shadow: 0 4px 12px rgba(12, 82, 230, 0.25);
+}
+
+.welcomeStartBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(12, 82, 230, 0.3);
+}
+
+.welcomeSkipBtn {
+  background: none;
+  border: 1.5px solid #e2e8f0;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  transition: all 0.15s;
+  font-family: var(--font-body);
+}
+
+.welcomeSkipBtn:hover {
+  border-color: #cbd5e1;
+  color: #64748b;
+}
+
+/* ── Animations ── */
+@keyframes tourFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes tourSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes tourPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.2; transform: scale(1.03); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip, .welcomeCard, .backdropOverlay {
+    animation: none;
+  }
+  .spotlightPulse {
+    animation: none;
+  }
+}

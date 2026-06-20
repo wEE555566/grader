@@ -1,0 +1,96 @@
+/* ========== Maintenance Page ========== */
+.maintenanceContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 2rem;
+}
+
+.maintenanceCard {
+  text-align: center;
+  max-width: 480px;
+  padding: 3rem 2.5rem;
+  background: var(--color-surface, white);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  animation: maintenanceFadeIn 0.5s ease;
+}
+
+@keyframes maintenanceFadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.maintenanceIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: block;
+  animation: maintenancePulse 2s ease-in-out infinite;
+}
+
+@keyframes maintenancePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.maintenanceTitle {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text-main, #1e293b);
+  margin-bottom: 0.75rem;
+}
+
+.maintenanceDesc {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary, #64748b);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.maintenanceBackBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #1e3a8a 100%);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.maintenanceBackBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+}
+
+.maintenanceProgress {
+  width: 80%;
+  max-width: 200px;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0 auto 1.5rem;
+}
+
+.maintenanceProgressBar {
+  height: 100%;
+  width: 30%;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-radius: 999px;
+  animation: progressSlide 2s ease-in-out infinite;
+}
+
+@keyframes progressSlide {
+  0% { transform: translateX(-100%); width: 30%; }
+  50% { width: 60%; }
+  100% { transform: translateX(350%); width: 30%; }
+}

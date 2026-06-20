@@ -1,0 +1,128 @@
+.bannerStack {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ── Base Banner ─────────────────────────────────────── */
+.banner {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 1.25rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  border-bottom: 1px solid transparent;
+  animation: bannerSlideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes bannerSlideIn {
+  from { opacity: 0; transform: translateY(-100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.bannerIcon {
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.bannerContent {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+}
+
+.bannerMessage {
+  font-weight: 500;
+}
+
+.bannerLink {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.bannerLink:hover {
+  opacity: 0.75;
+}
+
+.bannerClose {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+  padding: 0.15rem 0.35rem;
+  border-radius: 4px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.bannerClose:hover {
+  opacity: 1;
+  background: rgba(0,0,0,0.06);
+}
+
+/* ── Maintenance (orange) ───────────────────────────── */
+.maintenance {
+  background: #FFF7ED;
+  border-color: #FDBA74;
+  color: #9A3412;
+}
+
+.maintenance .bannerLink {
+  color: #C2410C;
+}
+
+/* ── Warning (yellow) ───────────────────────────────── */
+.warning {
+  background: #FFFBEB;
+  border-color: #FDE68A;
+  color: #92400E;
+}
+
+.warning .bannerLink {
+  color: #B45309;
+}
+
+/* ── Info (blue) ────────────────────────────────────── */
+.info {
+  background: #EFF6FF;
+  border-color: #93C5FD;
+  color: #1E40AF;
+}
+
+.info .bannerLink {
+  color: #1D4ED8;
+}
+
+/* ── Critical (red) ─────────────────────────────────── */
+.critical {
+  background: #FEF2F2;
+  border-color: #FCA5A5;
+  color: #991B1B;
+}
+
+.critical .bannerLink {
+  color: #B91C1C;
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+@media (max-width: 640px) {
+  .banner {
+    padding: 0.6rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .bannerIcon {
+    font-size: 0.95rem;
+  }
+}

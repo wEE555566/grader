@@ -1,0 +1,324 @@
+/* ==========================================================
+   AppSidebar — Unified Sidebar (Light Theme)
+   Based on the original WorkspaceSidebar design
+   ========================================================== */
+
+/* ── Container ── */
+.sidebar {
+  width: 260px;
+  height: calc(100vh - 64px);
+  background: linear-gradient(180deg, #f0f4ff 0%, #ffffff 100%);
+  border-right: 1px solid #e8ecf4;
+  padding: 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-shrink: 0;
+  position: sticky;
+  top: 64px;
+  transition: transform 0.3s ease, width 0.3s ease, padding 0.3s ease;
+  overflow: hidden;
+  align-self: flex-start;
+}
+
+/* Desktop: mini mode (icon-only) */
+.sidebar.closed {
+  width: 64px;
+  padding: 1.5rem 0.5rem;
+  transform: translateX(0);
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+/* Hide text labels when collapsed */
+.sidebar.closed .navLabel,
+.sidebar.closed .sectionLabel,
+.sidebar.closed .userInfo {
+  display: none;
+}
+
+.sidebar.closed .navItem,
+.sidebar.closed .createBtn,
+.sidebar.closed .logoutBtn {
+  justify-content: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.sidebar.closed .userProfile {
+  justify-content: center;
+  padding: 0.25rem 0;
+}
+
+.sidebar.closed .badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  margin-left: 0;
+  min-width: 0.6rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  padding: 0;
+  font-size: 0;
+  line-height: 0;
+}
+
+.sidebar.closed .navItem {
+  position: relative;
+}
+
+/* ── Brand ── */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.25rem;
+  flex-shrink: 0;
+}
+
+.brandIcon {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+}
+
+.brandName {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.brandSub {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* ── Section Label ── */
+.sectionLabel {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-muted, #94a3b8);
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+  padding-left: 0.5rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+/* ── Create Button ── */
+.createBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  flex-shrink: 0;
+}
+
+.createBtn:hover {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-dark) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(37,99,235,0.3);
+}
+
+.createBtn svg {
+  font-size: 1.1rem;
+}
+
+/* ── Navigation ── */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 10px;
+  color: #64748b;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.navItem:hover {
+  background: #eef2ff;
+  color: var(--color-primary);
+}
+
+.navActive {
+  background: var(--color-primary-50);
+  color: var(--color-primary-dark) !important;
+  font-weight: 600;
+  box-shadow: inset 3px 0 0 var(--color-primary);
+}
+
+.navActive:hover {
+  background: var(--color-primary-50);
+}
+
+.navActive .navIcon {
+  color: var(--color-primary);
+}
+
+.navIcon {
+  font-size: 1.05rem;
+  flex-shrink: 0;
+  width: 20px;
+  text-align: center;
+}
+
+/* ── Badge (notification count) ── */
+.badge {
+  margin-left: auto;
+  background: #ef4444;
+  color: white;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 1rem;
+  font-weight: 700;
+  min-width: 1.2rem;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: #e8ecf4;
+  margin: 0.5rem 0;
+}
+
+/* ── Bottom Area (Student view) ── */
+.bottomArea {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #e8ecf4;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem;
+  margin-bottom: 0.75rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease;
+}
+
+.userProfile:hover {
+  background: #f0f4ff;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.userInfo {
+  flex: 1;
+  overflow: hidden;
+}
+
+.userName {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text-main, #1e293b);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.userRole {
+  font-size: 0.75rem;
+  color: var(--color-text-muted, #94a3b8);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.userRoleIcon {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.logoutBtn {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted, #94a3b8);
+  font-weight: 500;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  font-size: 0.88rem;
+}
+
+.logoutBtn:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  /* Sidebar is replaced by MobileBottomBar on mobile */
+  .sidebar {
+    display: none !important;
+  }
+}
+

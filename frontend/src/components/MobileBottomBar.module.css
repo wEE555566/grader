@@ -1,0 +1,207 @@
+/* ==========================================================
+   MobileBottomBar — Fixed bottom tab navigation for mobile
+   Only visible on screens ≤768px
+   ========================================================== */
+
+.bottomBar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 950;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.92);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(195, 197, 216, 0.3);
+  box-shadow: 0 -2px 12px rgba(0, 0, 0, 0.06);
+  padding: 0 0.25rem;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+@media (max-width: 768px) {
+  .bottomBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+}
+
+/* ── Tab Item ── */
+.tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  flex: 1;
+  padding: 6px 0;
+  text-decoration: none;
+  color: #94a3b8;
+  font-size: 0.68rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  transition: color 0.2s ease, transform 0.15s ease;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  background: none;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.tab:active {
+  transform: scale(0.92);
+}
+
+.tabIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+.tabLabel {
+  font-size: 0.65rem;
+  letter-spacing: -0.2px;
+  line-height: 1;
+  max-width: 64px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Active State ── */
+.tabActive {
+  color: var(--qk-primary, #0c52e6);
+  font-weight: 600;
+}
+
+.tabActive .tabIcon {
+  background: rgba(12, 82, 230, 0.1);
+  color: var(--qk-primary, #0c52e6);
+  transform: scale(1.1);
+}
+
+/* ── Notification Badge ── */
+.badge {
+  position: absolute;
+  top: -2px;
+  right: -6px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.55rem;
+  font-weight: 700;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  box-shadow: 0 1px 3px rgba(239, 68, 68, 0.3);
+}
+
+/* ── "More" popup ── */
+.moreOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 949;
+  background: rgba(0, 0, 0, 0.2);
+  animation: moreFadeIn 0.15s ease;
+}
+
+.moreMenu {
+  position: fixed;
+  bottom: 72px;
+  left: 0.75rem;
+  right: 0.75rem;
+  z-index: 951;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.12);
+  padding: 0.5rem;
+  max-height: 50vh;
+  overflow-y: auto;
+  animation: moreSlideUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.moreItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  text-decoration: none;
+  color: #475569;
+  font-size: 0.88rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  border-radius: 10px;
+  transition: background 0.15s;
+}
+
+.moreItem:hover,
+.moreItem:active {
+  background: #f1f5f9;
+}
+
+.moreItemActive {
+  color: var(--qk-primary, #0c52e6);
+  font-weight: 600;
+  background: rgba(12, 82, 230, 0.06);
+}
+
+.moreItemIcon {
+  font-size: 1.05rem;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ── Create button (center tab) ── */
+.createTab {
+  color: white;
+}
+
+.createTab .tabIcon {
+  background: linear-gradient(135deg, var(--color-primary, #1e3a8a) 0%, var(--color-primary-dark, #172554) 100%);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 14px;
+  font-size: 1.3rem;
+  margin-top: -8px;
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
+}
+
+.createTab .tabLabel {
+  color: var(--color-primary, #1e3a8a);
+  font-weight: 600;
+}
+
+.createTab:active .tabIcon {
+  transform: scale(0.9);
+}
+
+@keyframes moreSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes moreFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

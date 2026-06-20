@@ -1,0 +1,134 @@
+.formWrapper {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.authTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--qk-primary); /* Canonical brand blue */
+  margin-bottom: 0.5rem;
+}
+
+.authSubtitle {
+  color: var(--qk-text-subtle);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+}
+
+.inputGroup {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.inputField {
+  width: 100%;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+  color: #334155;
+  border: none;
+  border-bottom: 2px solid var(--qk-border);
+  outline: none;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.inputField:focus {
+  border-bottom-color: var(--qk-primary);
+  box-shadow: 0 1px 0 0 var(--color-focus-ring);
+}
+
+.inputField::placeholder {
+  color: var(--qk-text-subtle);
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--qk-text-subtle);
+  cursor: pointer;
+}
+
+.optionsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #475569;
+}
+
+.forgotPwd {
+  color: var(--qk-text-subtle);
+  text-decoration: underline;
+}
+
+.submitBtn {
+  width: 100%;
+  background: var(--qk-primary);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 2rem; /* Pill shape */
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  transition: background 0.2s;
+}
+
+.submitBtn:hover {
+  background: var(--qk-primary-dark);
+}
+
+.footerText {
+  color: var(--qk-text-subtle);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.footerText a {
+  color: var(--qk-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.socialRow {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.socialBtn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid var(--qk-border);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  color: inherit;
+  text-decoration: none;
+}
+
+.socialBtn:hover {
+  border-color: var(--qk-primary);
+}
+
+.socialBtn.google { color: #ea4335; }
+.socialBtn.facebook { color: #1877f2; border-color: #1877f2; }

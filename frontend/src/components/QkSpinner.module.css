@@ -1,0 +1,29 @@
+/* QkSpinner — canonical loading indicator for QooKru
+   Usage:
+     import QkSpinner from '@/components/QkSpinner';
+     <QkSpinner />          (md, default)
+     <QkSpinner size="lg" />
+     <QkSpinner size="sm" label="โหลดรายการ..." />
+*/
+
+.spinner {
+  display: inline-block;
+  border-style: solid;
+  border-color: var(--color-border);
+  border-top-color: var(--qk-primary);
+  border-radius: 50%;
+  animation: qkSpin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+.sm { width: 18px; height: 18px; border-width: 2px; }
+.md { width: 26px; height: 26px; border-width: 2.5px; }
+.lg { width: 36px; height: 36px; border-width: 3px; }
+
+@keyframes qkSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner { animation: none; }
+}

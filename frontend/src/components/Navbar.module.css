@@ -1,0 +1,471 @@
+/* ============================================================
+   Navbar — Professional Academic Style (Redesigned)
+   ============================================================ */
+
+.skipNav {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: white;
+  padding: 8px 16px;
+  z-index: 9999;
+  text-decoration: none;
+  font-weight: bold;
+  font-family: var(--font-heading);
+  transition: top 0.2s;
+  border-bottom-right-radius: 8px;
+}
+
+.skipNav:focus {
+  top: 0;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background: var(--qk-overlay-soft);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--qk-border-soft);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 64px;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  height: 64px;
+  gap: 32px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.brand .logoText {
+  margin-left: -6px;
+}
+
+.brand:hover {
+  opacity: 0.85;
+}
+
+.logoImg {
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+}
+
+.logoText {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -1.4px;
+  line-height: 32px;
+}
+
+.logoOo {
+  color: var(--qk-primary-dark);
+}
+
+.logoKru {
+  color: var(--qk-primary);
+}
+
+.navLinks {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex: 1;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: var(--color-text-main);
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: -0.35px;
+  transition: color 0.2s ease;
+  padding: 2px 0;
+  position: relative;
+}
+
+.navLinks a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--qk-primary);
+  transition: width 0.25s ease;
+  border-radius: 1px;
+}
+
+.navLinks a:hover {
+  color: var(--qk-primary);
+}
+
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+.activeLink {
+  color: var(--qk-primary) !important;
+  font-weight: 600 !important;
+}
+
+.activeLink::after {
+  width: 100% !important;
+}
+
+.authButtons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.divider {
+  width: 1px;
+  height: 31px;
+  background-color: var(--qk-border-soft);
+  margin: 0 4px;
+}
+
+/* "เข้าห้องด้วยรหัส" — outlined brand pill button */
+.examJoinBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--qk-surface);
+  color: var(--color-primary);
+  padding: 0 18px;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.85rem;
+  line-height: 1;
+  text-decoration: none;
+  border: 1.5px solid var(--color-primary);
+  transition: all 0.2s ease;
+  height: 40px;
+  white-space: nowrap;
+}
+
+.examJoinBtn:hover {
+  background: var(--color-accent-soft);
+  border-color: var(--color-accent);
+  color: var(--color-accent-strong);
+  transform: translateY(-1px);
+}
+
+/* Icon buttons (notification bell, settings gear) */
+.iconBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  background: transparent;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-size: 1.05rem;
+  position: relative;
+}
+
+.iconBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-main);
+}
+
+.notifWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notifBadge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background: var(--color-error);
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 1px 4px;
+  border-radius: var(--radius-full);
+  min-width: 16px;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* "สมัครสมาชิก / เข้าสู่ระบบ" — solid dark blue */
+.loginBtn {
+  text-decoration: none;
+  font-family: var(--font-heading);
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.55rem 1.25rem;
+  transition: all 0.2s ease;
+  border-radius: var(--radius-lg);
+  background: var(--color-primary-dark);
+  border: none;
+  white-space: nowrap;
+}
+
+.loginBtn:hover {
+  background: var(--color-primary);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.profileBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--qk-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--qk-surface);
+  border: 2px solid #ffffff;
+  box-shadow: var(--qk-shadow-avatar);
+  transition: all 0.2s ease;
+}
+
+.profileBtn:hover {
+  background: var(--color-primary-100);
+  color: var(--color-primary-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.mobileMenuBtn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  padding: 0.5rem;
+  border-radius: var(--radius-md);
+  transition: all 0.2s;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobileMenuBtn:hover {
+  background: var(--color-surface-hover);
+  color: var(--color-text-main);
+}
+
+/* Mobile Menu Overlay */
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.99);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow-lg);
+  border-top: 1px solid var(--color-border);
+  animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  max-height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.mobileMenuLinks {
+  display: flex;
+  flex-direction: column;
+  padding: 0.75rem 1.25rem;
+}
+
+.mobileLink {
+  padding: 0.85rem 0.75rem;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  border-bottom: 1px solid var(--color-border-light);
+  transition: color 0.2s;
+}
+
+.mobileLink:hover {
+  color: var(--color-primary);
+}
+
+.activeMobileLink {
+  padding: 0.85rem 0.75rem;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.mobileMenuActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  padding: 1.25rem;
+  background: var(--color-surface-alt);
+}
+
+.mobileExamJoinBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem;
+  border-radius: var(--radius-lg);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  background: var(--color-surface);
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+
+.mobileMenuAuth {
+  padding: 0.75rem 1.25rem 1.25rem;
+  display: flex;
+  justify-content: center;
+}
+
+.mobileProfileLink {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  font-family: var(--font-heading);
+  color: var(--color-text-main);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.25rem;
+  background: var(--color-primary-50);
+  border-radius: var(--radius-full);
+  width: 100%;
+  justify-content: center;
+}
+
+.mobileLoginBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.7rem;
+  background: var(--color-primary-dark);
+  color: white;
+  text-decoration: none;
+  border-radius: var(--radius-full);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Desktop (aligned with AppSidebar's 768px breakpoint) ── */
+@media (min-width: 769px) {
+  .mobileMenuBtn {
+    display: none !important;
+  }
+  .mobileMenu {
+    display: none !important;
+  }
+}
+
+@media (max-width: 950px) {
+  .navContainer {
+    padding: 0.75rem 1.25rem;
+  }
+  .navLinks {
+    gap: 1.25rem;
+  }
+  .logoText {
+    font-size: 1.2rem;
+  }
+  .examJoinBtn {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navLinks {
+    display: none;
+  }
+  .mobileMenuBtn {
+    display: flex !important;
+  }
+  .navContainer {
+    padding: 0.7rem 1rem;
+  }
+  .logoText {
+    font-size: 1.15rem;
+  }
+  .logoImg {
+    width: 30px;
+    height: 30px;
+  }
+  .authButtons {
+    gap: 0.4rem;
+  }
+  .divider {
+    display: none;
+  }
+  .profileBtn, .loginBtn {
+    display: none;
+  }
+  .iconBtn {
+    width: 40px;
+    height: 40px;
+  }
+  .examJoinBtn {
+    padding: 0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+  }
+  .examJoinBtn span {
+    display: none;
+  }
+}

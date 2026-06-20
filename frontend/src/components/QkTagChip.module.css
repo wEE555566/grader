@@ -1,0 +1,15 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  background-color: var(--qk-tag-bg);
+  color: var(--qk-tag-text);
+  font-size: 10px;
+  font-family: var(--font-body);
+  line-height: 15px;
+  border-radius: var(--qk-radius-pill);
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
